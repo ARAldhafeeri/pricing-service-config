@@ -1,0 +1,29 @@
+apiVersion: gitisking/v1
+version: v2.1.0
+metadata:
+  name: stock-service
+  version: v2.1.0
+  repo: https://github.com/ARAldhafeeri/pricing-service-config.git
+  dev-base-url: https://localhost:3000/stock/dev/
+  stage-base-url: https://localhost:3000/stock/stage/
+  prod-base-url: https://localhost:3000/stock/prod/
+  language: nodejs
+  description: " Manages inventory stock levels, updates, and availability."
+actualState:
+  lastChecked: "2024-09-23T12:00:00Z"
+  status: true
+  details:
+    pricing-service-v2:
+      status: true
+      message: "Handshake successful with Pricing Service"
+    restock-service-v2:
+      status: true
+      message: "Handshake successful with Restock Service"
+desiredState:
+  pricing-service-v2:
+    sync: strict
+    repo: https://github.com/ARAldhafeeri/pricing-service-config.git
+  restock-service-v2:
+    sync: strict
+    repo: https://github.com/ARAldhafeeri/pricing-restock-config.git
+

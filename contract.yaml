@@ -1,0 +1,64 @@
+apiVersion: gitisking/v1
+version: v2.1.0
+apiSpec:
+  openAPI: 3.0
+  endpoints:
+    - method: GET
+      path: /stock/{productId}
+      description: Get stock details for a product
+      parameters:
+        - in: path
+          name: productId
+          required: true
+          schema:
+            type: string
+            description: ID of the product to fetch stock details.
+      responses:
+        '200':
+          description: Stock details retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  productId:
+                    type: string
+                    example: "12345"
+                  stockLevel:
+                    type: integer
+                    example: 150
+                  status:
+                    type: string
+                    example: in_stock
+        '404':
+          description: Product not found
+    - method: PUT
+      path: /stock/{productId}
+      description: Update stock levels for a product
+      parameters:
+        - in: path
+          name: productId
+          required: true
+          schema:
+            type: string
+            description: ID of the product to update.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                stockLevel:
+                  type: integer
+                  description: New stock level.
+                  example: 200
+                warehouseLocation:
+                  type: string
+                  description: Location of stock.
+                  example: "Warehouse B"
+      responses:
+        '200':
+          description: Stock updated successfully
+        '400':
+        description: Invalid request payload

@@ -1,0 +1,30 @@
+apiVersion: gitisking/v1
+version: v2.1.0
+dependencies:
+  - name: stockService
+    uuid: 0a22b5d9-0940
+    outbound:
+      method: GET
+      path: /stock/{productId}
+      description: Get stock details for a product
+      parameters:
+        - in: path
+          name: productId
+          required: true
+          schema:
+            type: string
+            description: ID of the product to fetch stock details.
+    inbound: null
+  - name: restockService
+    uuid: 0a22b5d9-0941
+    outbound:
+      method: GET
+      path: /restock/status/{productId}
+      description: Get restock status for a product
+      parameters:
+        - in: path
+          name: productId
+          required: true
+          schema:
+            type: string
+    inbound: null

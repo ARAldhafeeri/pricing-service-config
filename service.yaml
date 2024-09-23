@@ -11,24 +11,25 @@ metadata:
   language: nodejs
   description: Manages product pricing and discount rates. 
 actualState:
-    lastChecked: "2024-09-23T12:00:00Z"
-    handshakeStatus: true
-    details:
-      stockService:
-        status: true
-        message: Handshake successful with Stock Service
-      restockService:
-        status: true
-        message: Handshake successful with Restock Service
+  lastChecked: "2024-09-23T12:00:00Z"
+  handshakeStatus: true
+  details:
+    stockService:
+      status: true
+      message: Handshake successful with Stock Service
+    restockService:
+      status: true
+      message: Handshake successful with Restock Service
 desiredState:
   stockService:
     sync: strict
     repo: https://github.com/ARAldhafeeri/stock-service-config.git
     dependencies:
-      - /stock/{productId}
+      - uuid: 0a22b5d9-0940
+        name: stockService
   restockService:
     sync: strict
     repo: https://github.com/ARAldhafeeri/restock-service-config.git
     dependencies:
-      - /restock/status/
-
+      - uuid: 0a22b5d9-0941
+        name: restockService
